@@ -1,0 +1,15 @@
+s = 'azcbobobegghakl'
+ns = ''
+e = s[0]
+for i in range(1, len(s)):
+    if ord(e) <= ord(s[i]):
+        ns += e
+        e = s[i]
+        i += 1
+    else:
+        ns += e
+        ns += '\n'
+        e = s[i]
+ns += e
+l = ns.split()  
+print(max(l, key=len))
