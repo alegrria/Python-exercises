@@ -1,0 +1,21 @@
+def closest_power(base, num):
+    '''
+    base: base of the exponential, integer > 1
+    num: number you want to be closest to, integer > 0
+    Find the integer exponent such that base**exponent is closest to num.
+    Note that the base**exponent may be either greater or smaller than num.
+    In case of a tie, return the smaller value.
+    Returns the exponent.
+    '''
+    if base > 1:
+        exp = 0
+        while base**exp < num and base**(exp + 1) < num:
+            exp += 1
+        if base**exp <= num and base**(exp + 1) >= num:
+            if abs(num - base**exp) <= abs(num - base**(exp + 1)):
+                return print(exp)
+            else:
+                return print(exp + 1)
+    if num == 1:
+        return print(0)
+closest_power(10, 1000000)
