@@ -1,0 +1,18 @@
+'''
+a procedure called oddTuples, which takes a tuple as input, 
+and returns a new tuple as output, where every other element 
+of the input tuple is copied, starting with the first one
+'''
+def oddTuples(aTup):
+    oddTup = ()
+    count = 0
+    for item in list(aTup):
+        if count % 2 == 0:
+            oddTup = oddTup + (item,)
+        count += 1
+    return oddTup
+
+def oddTuples(aTup):
+    oddTup = ()
+    oddTup = aTup[::2]
+    return oddTup
