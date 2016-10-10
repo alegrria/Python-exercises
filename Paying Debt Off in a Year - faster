@@ -1,0 +1,23 @@
+'''
+Using Bisection Search to Make the Program Faster
+'''
+MonthIntRate = annualInterestRate/12.0
+LB = balance/12.0
+UB = (balance * (1 + MonthIntRate)**12)/12.0
+epsilon = 0.01
+mid = (LB + UB)/2.0
+MMPay = mid
+debt = balance - MMPay*12
+while abs(debt) > epsilon:
+    debt = balance
+    for month in range(1, 13):
+        UnpaidBalance = debt - MMPay
+        CurrentBalance = UnpaidBalance + (MonthIntRate * UnpaidBalance)
+        debt = CurrentBalance
+    if debt < -epsilon:
+        UB = mid
+    elif debt > epsilon:
+        LB = mid
+    mid = (LB + UB)/2.0
+    MMPay = mid
+print('Expected Lowest Payment: ' + str(round(MMPay, 2)))
