@@ -1,0 +1,26 @@
+'''
+a program that calculates the minimum fixed monthly payment 
+needed in order pay off a credit card balance within 12 months. 
+By a fixed monthly payment, 
+we mean a single number which does not change each month, 
+but instead is a constant amount that will be paid each month.
+'''
+MonthIntRate = annualInterestRate/12.0
+bal = balance
+MMPay = 10
+while bal > 0:
+    for month in range(1, 13):
+        UnpaidBalance = bal - MMPay
+        CurrentBalance = UnpaidBalance + (MonthIntRate * UnpaidBalance)
+        bal = CurrentBalance
+    if bal > 0:
+        MMPay += 10
+        bal = balance
+    else: print(MMPay)
+print('Expected Lowest Payment: ' + str(MMPay)) 
+
+
+#it's nice to use already known formula for this purpose
+MIRate = annualInterestRate/12.0
+MinMonthPay = (MIRate*balance)/(1 - (1 + MIRate)**-12)
+print('Expected Lowest Payment: ' + str(MinMonthPay + 10 - MinMonthPay % 10))
